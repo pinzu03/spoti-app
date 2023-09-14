@@ -1,1 +1,2 @@
-export { TrackList } from './tracks.interfaces'
+export { Track, TracksResponse } from './tracks.interfaces'
+export { TokenResponse } from './spotify.interfaces';

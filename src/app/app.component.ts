@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
+import { SpotifyService } from './services/spotify.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `
+    <templates-main>
+      <router-outlet></router-outlet>
+    </templates-main>
+  `
 })
 export class AppComponent {
-  title = 'spoti-app';
+  constructor( private spotifyService: SpotifyService ) {
+    spotifyService.getToken();
+  }
 }

@@ -1,13 +1,13 @@
 import { ActionReducerMap } from "@ngrx/store";
 
-import { TrackList } from "../interfaces";
+import { Track } from "../interfaces";
 
-import { trackListReducer } from "./reducers/track-list.reducer";
+import { tracksListReducer } from "./reducers/tracks.reducer";
 
 export interface AppState {
-  tracksList: TrackList[];
+  tracksList: Track[];
 }
 
 export const ROOT_REDUCERS: ActionReducerMap<AppState> = {
-  tracksList: trackListReducer
+  tracksList: tracksListReducer
 }

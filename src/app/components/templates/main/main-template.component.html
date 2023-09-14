@@ -1,21 +1,25 @@
 <div class="t-container">
-  <header class="t-header">
-    <ul class="t-header__list">
-      <li class="t-list__item">
-        <i></i>
-        <a href="">Inicio</a>
-      </li>
+  <section class="t-section t-section--left">
+    <header class="t-header">
+      <ul class="t-header__list">
+        <li class="t-list__item">
+          <i></i>
+          <a href="">Inicio</a>
+        </li>
 
-      <li class="t-list__item">
-        <i></i>
-        <a href="">Buscar</a>
-      </li>
-    </ul>
-  </header>
+        <li class="t-list__item">
+          <i></i>
+          <a href="">Buscar</a>
+        </li>
+      </ul>
+    </header>
 
-  <nav>
-    elementos favoritos
-  </nav>
+    <nav class="t-nav">
+      elementos favoritos
+    </nav>
+  </section>
 
-  <ng-content></ng-content>
+  <section class="t-section t-section--rigth">
+    <ng-content></ng-content>
+  </section>
 </div>

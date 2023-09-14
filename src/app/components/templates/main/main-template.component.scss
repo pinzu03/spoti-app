@@ -7,11 +7,39 @@
   display: flex;
 }
 
+.t-section {
+  padding: 30px;
+  overflow: hidden;
+
+  &--left {
+    display: flex;
+    width: 500px;
+    height: 100%;
+    flex-direction: column;
+    row-gap: 30px;
+  }
+
+  &--rigth {
+    width: 100%;
+    height: 100%;
+    color: white;
+    padding-left: 0;
+  }
+}
+
 .t-header {
-  margin: 10px;
+  background-color: $blacksmoke;
   padding: 25px;
-  width: 360px;
+  width: 100%;
   height: 12%;
+  border-radius: 10px;
+}
+
+.t-nav {
   background-color: $blacksmoke;
   border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  color: white;
+  padding: 25px;
 }

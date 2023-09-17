@@ -4,9 +4,9 @@ import { SpotifyService } from './services/spotify.service';
 @Component({
   selector: 'app-root',
   template: `
-    <templates-main>
+    <template-main>
       <router-outlet></router-outlet>
-    </templates-main>
+    </template-main>
   `
 })
 export class AppComponent {

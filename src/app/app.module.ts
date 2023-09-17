@@ -1,8 +1,8 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { ROOT_REDUCERS } from './state/app.state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TracksEffects } from './state/effects/tracks.effects';
+import { OrganismsModule } from './components/organisms/organisms.module';
+import { TokenInterceptorService } from './interceptors/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -24,13 +26,21 @@ import { TracksEffects } from './state/effects/tracks.effects';
     BrowserModule,
     AppRoutingModule,
     TemplatesModule,
+    OrganismsModule,
     HttpClientModule,
 
     StoreModule.forRoot(ROOT_REDUCERS),
     StoreDevtoolsModule.instrument({ name: "SpotiApp" }),
     EffectsModule.forRoot([TracksEffects])
   ],
-  providers: [CookieService],
+  providers: [
+    CookieService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

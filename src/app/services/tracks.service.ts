@@ -19,11 +19,9 @@ export class TracksService {
       .set('seed_genres', 'reggaeton')
       .set('limit', '30');
 
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${this.cookieService.get('Token')}`
-    });
 
-    return this.http.get<TracksResponse>(`${this.urlBase}/recommendations`, { headers, params });
+
+    return this.http.get<TracksResponse>(`${this.urlBase}/recommendations`, { params });
   }
 
 }

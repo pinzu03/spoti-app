@@ -11,10 +11,7 @@ export class TracksEffects {
     ofType('[TracksList Page] Load Tracks'),
     exhaustMap(() => this.tracksService.getTracksList()
       .pipe(
-        map(({ tracks }) => ({ type: '[Tracks API] Tracks loaded success', tracksList: tracks })),
-        catchError(() => {
-          throw new Error('Algo salio mal en la solicitud de canciones recomendadas');
-        })
+        map(({ tracks }) => ({ type: '[Tracks API] Tracks loaded success', tracksList: tracks }))
       ))
     )
   );

@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { loadTracks } from 'src/app/state/actions/tracks.actions';
 
 @Component({
-  selector: 'app-home',
+  selector: 'page-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

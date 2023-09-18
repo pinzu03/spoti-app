@@ -1,0 +1,8 @@
+<div class="p-login">
+  <article class="p-login__container">
+    <h1 class="p-login__title"><img src="../../../assets/spotify-icono.png" alt="Icono de spotify">Spoti<span style="color: #1ed760">App</span></h1>
+    <form class="p-login__form" [formGroup]="loginForm" (ngSubmit)="onSubmit($event)">
+      <input type="password" placeholder="Ingrese su Client secret" formControlName="clientSecret">
+    </form>
+  </article>
+</div>

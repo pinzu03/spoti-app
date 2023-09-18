@@ -5,6 +5,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { TemplatesModule } from './components/templates/templates.module';
@@ -16,11 +17,13 @@ import { HomeComponent } from './pages/home/home.component';
 import { ROOT_REDUCERS } from './state/app.state';
 import { TracksEffects } from './state/effects/tracks.effects';
 import { TokenInterceptorService } from './interceptors/token-interceptor.service';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +31,7 @@ import { TokenInterceptorService } from './interceptors/token-interceptor.servic
     TemplatesModule,
     OrganismsModule,
     HttpClientModule,
+    ReactiveFormsModule,
 
     StoreModule.forRoot(ROOT_REDUCERS),
     StoreDevtoolsModule.instrument({ name: "SpotiApp" }),

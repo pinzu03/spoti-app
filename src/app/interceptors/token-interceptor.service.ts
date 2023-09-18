@@ -35,8 +35,11 @@ export class TokenInterceptorService implements HttpInterceptor {
         const { error } = errorResponse;
 
         if(error.status === 401 && error.message === 'The access token expired') {
-          this.spotifyService.getToken();
-          this.store.dispatch(loadTracks());
+          this.spotifyService.getToken().subscribe(res => {
+            this.cookieService.set('Token', res.access_token);
+
+            this.store.dispatch(loadTracks());
+          });
         }
 
         throw new Error(`Error en el interceptor: ${error.message}`);

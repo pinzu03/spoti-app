@@ -5,6 +5,9 @@
       <th class="o-row__head">Título</th>
       <th class="o-row__head o-row__head--time" colspan="2"><i class="fa-regular fa-clock"></i></th>
     </tr>
+    <tr>
+      <th colspan="4" class="o-row__head o-row__head--border"></th>
+    </tr>
   </thead>
 
   <tbody class="o-table__body">
@@ -15,7 +18,7 @@
       <td class="o-row__body">{{ i + 1 }}</td>
       <td class="o-row__body o-row__body--name">
         <p>{{ track.name }}</p>
-        <p>{{ track.artists[0].name }}</p>
+        <p class="o-row__artist">{{ track.artists[0].name }}</p>
       </td>
       <td class="o-row__body o-row__body--align-right"><i class="fa-solid fa-heart"></i></td>
       <td class="o-row__body o-row__body--align-right">{{ track.duration_ms | millisecondsAMinutes }}</td>

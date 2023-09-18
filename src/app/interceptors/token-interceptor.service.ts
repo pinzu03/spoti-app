@@ -3,13 +3,20 @@ import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { SpotifyService } from '../services/spotify.service';
+import { Store } from '@ngrx/store';
+import { loadTracks } from '../state/actions/tracks.actions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenInterceptorService implements HttpInterceptor {
 
-  constructor( private cookieService: CookieService ) { }
+  constructor(
+    private cookieService: CookieService,
+    private spotifyService: SpotifyService,
+    private store: Store
+  ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -24,9 +31,15 @@ export class TokenInterceptorService implements HttpInterceptor {
     });
 
     return next.handle( reqClone ).pipe(
-      catchError(error => {
-        console.log(error)
-        throw new Error(`Esto salio mal`);
+      catchError(({error: errorResponse}) => {
+        const { error } = errorResponse;
+
+        if(error.status === 401 && error.message === 'The access token expired') {
+          this.spotifyService.getToken();
+          this.store.dispatch(loadTracks());
+        }
+
+        throw new Error(`Error en el interceptor: ${error.message}`);
       })
     );
   }

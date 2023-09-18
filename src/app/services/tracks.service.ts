@@ -1,7 +1,6 @@
-import { Injectable, OnInit } from '@angular/core';
-import { Track, TracksResponse } from '../interfaces';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { CookieService } from 'ngx-cookie-service';
+import { Injectable } from '@angular/core';
+import { TracksResponse } from '../interfaces';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class TracksService {
 
-  constructor( private http: HttpClient, private cookieService: CookieService ) { }
+  constructor( private http: HttpClient ) { }
 
   private urlBase: string = 'https://api.spotify.com/v1';
 
@@ -18,8 +17,6 @@ export class TracksService {
     const params = new HttpParams()
       .set('seed_genres', 'reggaeton')
       .set('limit', '30');
-
-
 
     return this.http.get<TracksResponse>(`${this.urlBase}/recommendations`, { params });
   }
